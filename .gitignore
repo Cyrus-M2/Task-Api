@@ -1,0 +1,9 @@
+PORT = 6000
+
+DATABASE_URL="postgresql://postgres:password@localhost:5432/Task_db?"
+
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
