@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Tasks" (
+CREATE TABLE "Task" (
     "task_id" TEXT NOT NULL,
     "task_title" TEXT NOT NULL,
     "task_description" TEXT NOT NULL,
@@ -7,5 +7,5 @@ CREATE TABLE "Tasks" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Tasks_pkey" PRIMARY KEY ("task_id")
+    CONSTRAINT "Task_pkey" PRIMARY KEY ("task_id")
 );

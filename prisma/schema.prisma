@@ -14,4 +14,5 @@ model Task {
   isCompleted Boolean @map("is_Completed") @default(false)
   CreatedAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
 }
