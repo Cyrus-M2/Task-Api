@@ -18,14 +18,14 @@ app.get("/", (req, res) => {
 app.post('/tasks', async (req, res) => {
     try {
             const { title, description, isCompleted} = req.body;
-            const task = await client.Tasks.create({
+            const tasks = await client.Tasks.create({
                 data: {
                     title,
                     description,
                     isCompleted: isCompleted || false
                 }
             });
-            res.status(201).json(task);
+            res.status(201).json(tasks);
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).json({error: 'Failed to create task'});
@@ -38,7 +38,8 @@ app.get('/tasks', async (req, res) => {
         res.json(tasks);
     } catch (error) {
         console.error('Error fetching tasks:', error);
-        res.json(tasks);
+        // res.json(tasks);
+        res.status(500).json({ error: 'Failed to fetch tasks' });
     }
 });
 
@@ -106,5 +107,5 @@ if (process.env.PORT){
 
 
 app.listen(port, () => {
-    console.log("App running on port ${port}");
+    console.log(`App running on port ${port}`);
 })
