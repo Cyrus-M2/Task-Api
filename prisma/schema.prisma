@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Tasks {
+model Task {
   id String @id @default(uuid()) @map("task_id")
   title String @map("task_title")
   description String @map("task_description")

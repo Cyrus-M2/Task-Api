@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 app.post('/tasks', async (req, res) => {
     try {
             const { title, description, isCompleted} = req.body;
-            const tasks = await client.Tasks.create({
+            const tasks = await client.task.create({
                 data: {
                     title,
                     description,
@@ -34,7 +34,7 @@ app.post('/tasks', async (req, res) => {
 
 app.get('/tasks', async (req, res) => {
     try {
-        const tasks = await client.Tasks.findMany();
+        const tasks = await client.task.findMany();
         res.json(tasks);
     } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -45,10 +45,9 @@ app.get('/tasks', async (req, res) => {
 
 app.get('/tasks/:id', async (req, res) => {
     try {
-           const task = await client.Tasks.findUnique({
+           const task = await client.task.findUnique({
         where: {
-            id: req.params.id
-
+            id: req.params
         }
     });
     
@@ -66,7 +65,7 @@ app.put('/tasks/:id', async (req, res) => {
     try {
         const { title, description, isCompleted } = req.body;
 
-        const updatedTask = await client.Tasks.update({
+        const updatedTask = await client.task.update({
             where: {
                 id: req.params.id
             },
@@ -85,7 +84,7 @@ app.put('/tasks/:id', async (req, res) => {
 
 app.delete('/tasks/:id', async (req, res) => {
     try {
-        await client.Tasks.delete({
+        await client.task.delete({
             where: {
                 id: req.params.id
             }
